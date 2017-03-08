@@ -87,12 +87,41 @@ describe('Chapter Two', function() {
     expect(chapterTwo.kThToLast(linkedList, 3)).to.equal(3)
   })
 
-  xit('2.3 - Delete Middle Node', function() {
-      expect(true).to.be.false;
+  it('2.3 - Delete Middle Node', function() {
+      var linkedList = helper.LinkedList()
+      linkedList.addToTail('a')
+      linkedList.addToTail('b')
+      linkedList.addToTail('c')
+      linkedList.addToTail('d')
+      linkedList.addToTail('e')
+      linkedList.addToTail('f')
+      var deleteNode = linkedList.head.next.next
+      chapterTwo.deleteMiddleNode(deleteNode)
+      expect(linkedList.head.value).to.equal('a')
+      expect(linkedList.head.next.value).to.equal('b')
+      expect(linkedList.head.next.next.value).to.equal('d')
+      expect(linkedList.head.next.next.next.value).to.equal('e')
+      expect(linkedList.tail.value).to.equal('f')
   })
   
-  xit('2.4 - Partition', function() {
-      expect(true).to.be.false;
+  it('2.4 - Partition', function() {
+    var linkedList = helper.LinkedList()
+    linkedList.addToTail(3)
+    linkedList.addToTail(5)
+    linkedList.addToTail(8)
+    linkedList.addToTail(5)
+    linkedList.addToTail(10)
+    linkedList.addToTail(2)
+    linkedList.addToTail(1)
+    var result = chapterTwo.partition(linkedList, 5)
+    // there are 3 numbers less than 5 & 4 greater
+    expect(result.head.value).to.be.below(5)
+    expect(result.head.next.value).to.be.below(5)
+    expect(result.head.next.next.value).to.be.below(5)
+    expect(result.head.next.next.next.value).to.be.at.least(5)
+    // expect(result.head.next.next.next.next.value).to.be.at.least(5)
+    // expect(result.head.next.next.next.next.next.value).to.be.at.least(5)
+    // expect(result.tail.value).to.be.at.least(5)
   })
   
   xit('2.5 - Sum Lists', function() {

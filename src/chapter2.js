@@ -31,7 +31,6 @@ exports.kThToLast = (linkedList, k) => {
     reverseValueArr.unshift(node.value);
     node = node.next;
   }
-  console.log(reverseValueArr)
   return reverseValueArr[k - 1];
 };
 
@@ -44,8 +43,8 @@ exports.deleteMiddleNode = (deleteNode) => {
 // 2.4 - Partition
 exports.partition = (linkedList, partitionNum) => {
   const orderdArr = [];
-  let node = linkedList;
-  while (node.next != null) {
+  let node = linkedList.head;
+  while (node != null) {
     if (node.value >= partitionNum) {
       orderdArr.push(node.value);
     } else {
@@ -53,7 +52,7 @@ exports.partition = (linkedList, partitionNum) => {
     }
     node = node.next;
   }
-  node = linkedList;
+  node = linkedList.head;
   for (let i = 0; i < orderdArr.length; i++) {
     node.value = orderdArr[i];
     node = node.next;
