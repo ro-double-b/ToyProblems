@@ -4,15 +4,23 @@ var exports = module.exports = {};
 // 2.1 - Remove Dups
 exports.removeDups = (linkedList) => {
   const list = {};
-  let node = linkedList;
-  while (node != null) {
-    if (list[node.value] === undefined) {
-      list[node.value] = 1;
+  const node = linkedList.head;
+  // add head of linkedList to the list tracker
+  list[node.value] = 1;
+  const helper = (currentNode) => {
+    if (currentNode.next === null) {
+      linkedList.tail = currentNode;
+    } else if (list[currentNode.next.value] !== 1) {
+      list[currentNode.next.value] = 1;
+      helper(currentNode.next);
+    } else if (currentNode.next.next === null) {
+      linkedList.tail = currentNode;
     } else {
-      node.next = node.next.next;
+      currentNode.next = currentNode.next.next;
+      helper(currentNode.next);
     }
-    node = node.next;
-  }
+  };
+  helper(node);
 };
 
 // 2.2 - Return Kth to Last

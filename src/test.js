@@ -1,6 +1,7 @@
 /* eslint-disable */ 
 
 const expect = require('chai').expect;
+const helper = require('./helper')
 const chapterOne = require('./chapter1');
 const chapterTwo = require('./chapter2');
 // const chapterThree = require('./chapter3');
@@ -33,9 +34,9 @@ describe('Chapter One', function() {
   
   it('1.5 - One Away', function() {
       expect(chapterOne.oneAway('pale', 'ple')).to.be.true;
-      // expect(chapterOne.oneAway('pales', 'pale')).to.be.true;
-      // expect(chapterOne.oneAway('pale', 'bale')).to.be.true;
-      // expect(chapterOne.oneAway('pale', 'bake')).to.be.false;
+      expect(chapterOne.oneAway('pales', 'pale')).to.be.true;
+      expect(chapterOne.oneAway('pale', 'bale')).to.be.true;
+      expect(chapterOne.oneAway('pale', 'bake')).to.be.false;
   })
   
   xit('1.6 - String Compression', function() {
@@ -58,22 +59,36 @@ describe('Chapter One', function() {
 describe('Chapter Two', function() {
 
   it('2.1 - Remove Dups', function() {
+    // check to make sure that dup is removed
+    var listOne = helper.LinkedList()
+    listOne.addToTail(2)
+    listOne.addToTail(2)
+    listOne.addToTail(3)
+    chapterTwo.removeDups(listOne)
+    expect(listOne.head.next.value).to.equal(3)
+
+    // check to make sure that tail is properly re-assigned if dup is last number
+    var listTwo = helper.LinkedList()
+    listTwo.addToTail(2)
+    listTwo.addToTail(3)
+    listTwo.addToTail(2)
+    chapterTwo.removeDups(listTwo)
+    expect(listTwo.tail.value).to.equal(3)
+  })
+
+  xit('2.2 - Return Kth to Last', function() {
     expect(true).to.be.false;
   })
 
-  it('2.2 - Return Kth to Last', function() {
-    expect(true).to.be.false;
-  })
-
-  it('2.3 - Delete Middle Node', function() {
+  xit('2.3 - Delete Middle Node', function() {
       expect(true).to.be.false;
   })
   
-  it('2.4 - Partition', function() {
+  xit('2.4 - Partition', function() {
       expect(true).to.be.false;
   })
   
-  it('2.5 - Sum Lists', function() {
+  xit('2.5 - Sum Lists', function() {
       expect(true).to.be.false;
   })
   
