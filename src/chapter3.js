@@ -1,9 +1,40 @@
-// var exports = module.exports = {};
+var exports = module.exports = {};
+const helper = require('./helper')
 // === CHAPTER 3 === //
 
 // 3.1 - Three in One
 
-// each stack would alternate in the array...
+exports.threeInOne = () => {
+  const storage = {};
+  storage.stackStorage = [];
+  const ArrStack = (numberInArr) => {
+    const stack = {};
+    let position = numberInArr;
+    stack.push = (value) => {
+      storage.stackStorage[position] = value;
+      position = position + 3;
+      console.log('push position', position);
+    };
+
+    stack.pop = () => {
+      console.log('pop position', position);
+      if (position >= 2) {
+        const temp = storage.stackStorage[position - 3];
+        delete storage.stackStorage[position - 3];
+        position = position - 3;
+        return temp;
+      }
+    };
+    return stack;
+  };
+
+  storage.one = ArrStack(0);
+  storage.two = ArrStack(1);
+  storage.three = ArrStack(2);
+
+  return storage;
+};
+
 // each stack would have a tracker to tell which index the last added item was at in the array
 // ie each stack would start off at S#1 = 0, S#2 = 1, S#3 = 2
 // each time an item was added to the stack i would increase it by 3...effectively showing where the next item can be added for that particular stack
