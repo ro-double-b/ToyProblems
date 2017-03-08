@@ -1,19 +1,25 @@
-// === CHAPTER 1 === //
+// === CHAPTER 4 === //
 
-// 1.1 - Is Unique
+// 4.1 - Route Between Nodes
 
-// 1.2 - Check Permutation
+// 4.2 - Minimal Tree
 
-// 1.3 - URLify
+// 4.3 - List of Depths
 
-// 1.4 - Palindrome Permutation
+// 4.4 - Check Balanced
 
-// 1.5 - One Away
+// 4.5 - Validate BST
 
-// 1.6 - String Compression
+// 4.6 - Successor
 
-// 1.7 - Rotate Matriz
+// 4.7 - Build Order
 
-// 1.8 - Zero Matrix
+// 4.8 - First Common Ancestor
 
-// 1.9 - String Rotation
+// 4.9 - BST Sequences
+
+// 4.10 - Check Subtree
+
+// 4.11 - Random Node
+
+// 4.12 - Paths with Sum
