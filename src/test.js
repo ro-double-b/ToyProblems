@@ -76,8 +76,15 @@ describe('Chapter Two', function() {
     expect(listTwo.tail.value).to.equal(3)
   })
 
-  xit('2.2 - Return Kth to Last', function() {
-    expect(true).to.be.false;
+  it('2.2 - Return Kth to Last', function() {
+    var linkedList = helper.LinkedList()
+    linkedList.addToTail(5)
+    linkedList.addToTail(4)
+    linkedList.addToTail(3)
+    linkedList.addToTail(2)
+    linkedList.addToTail(1)
+    expect(chapterTwo.kThToLast(linkedList, 5)).to.equal(5)
+    expect(chapterTwo.kThToLast(linkedList, 3)).to.equal(3)
   })
 
   xit('2.3 - Delete Middle Node', function() {

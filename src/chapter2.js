@@ -26,12 +26,13 @@ exports.removeDups = (linkedList) => {
 // 2.2 - Return Kth to Last
 exports.kThToLast = (linkedList, k) => {
   const reverseValueArr = [];
-  let node = linkedList;
-  while (node.next != null) {
+  let node = linkedList.head;
+  while (node != null) {
     reverseValueArr.unshift(node.value);
     node = node.next;
   }
-  return reverseValueArr[k];
+  console.log(reverseValueArr)
+  return reverseValueArr[k - 1];
 };
 
 // 2.3 - Delete Middle Node
