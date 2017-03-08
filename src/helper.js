@@ -45,3 +45,63 @@ exports.LinkedList = () => {
   return list;
 };
 
+exports.Stack = () => {
+  const someInstance = {};
+  const storage = { 0: 1 };
+  let key = 0;
+  let lastValue;
+
+  someInstance.push = (value) => {
+    storage[key] = value;
+    key++;
+    lastValue = value;
+  };
+
+  someInstance.pop = () => {
+    if (key > 0) {
+      delete storage[key];
+      key--;
+      lastValue = storage[key];
+    }
+    return lastValue;
+  };
+
+  someInstance.size = () => {
+    return key;
+  };
+
+  return someInstance;
+};
+
+
+exports.Queue = () => {
+  const someInstance = {};
+  const storage = {};
+  let key = 0;
+
+  someInstance.enqueue = (value) => {
+    storage[key] = value;
+    key++;
+  };
+
+  someInstance.dequeue = () => {
+    if (key > 0) {
+      const temp = storage[0];
+      delete storage[0];
+      for (let i = 1; i <= key; i++) {
+        storage[i - 1] = storage[i];
+      }
+      delete storage[key];
+      key--;
+      return temp;
+    }
+    return undefined;
+  };
+
+  someInstance.size = () => {
+    return key;
+  };
+
+  return someInstance;
+};
+
