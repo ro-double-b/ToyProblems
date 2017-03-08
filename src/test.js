@@ -124,20 +124,21 @@ describe('Chapter Two: Linked Lists', function() {
     expect(result.tail.value).to.be.at.least(5)
   })
   
-  xit('2.5 - Sum Lists', function() {
-      var listOne = helper.LinkedList()
-      listOne.addToTail(7)
-      listOne.addToTail(1)
-      listOne.addToTail(6)
+  it('2.5 - Sum Lists', function() {
+  expect(true).to.be.false
+  //     var listOne = helper.LinkedList()
+  //     listOne.addToTail(7)
+  //     listOne.addToTail(1)
+  //     listOne.addToTail(6)
 
-      var listTwo = helper.LinkedList()
-      listTwo.addToTail(5)
-      listTwo.addToTail(9)
-      listTwo.addToTail(2)
+  //     var listTwo = helper.LinkedList()
+  //     listTwo.addToTail(5)
+  //     listTwo.addToTail(9)
+  //     listTwo.addToTail(2)
 
-      var solution = chapterTwo.sumLists(listOne, listTwo)
-      console.log(solution, 'ehehe')
-      expect(solution.head.value).to.be(2)
+  //     var solution = chapterTwo.sumLists(listOne, listTwo)
+  //     console.log(solution, 'ehehe')
+  //     expect(solution.head.value).to.be(2)
   })
   
   xit('2.6 - Palindrome', function() {
@@ -155,8 +156,8 @@ describe('Chapter Two: Linked Lists', function() {
 
 describe('Chapter Three: Stacks and Queues', function() {
 
-  xit('3.1 - Three in One', function() {
-    
+  it('3.1 - Three in One', function() {
+    expect(true).to.be.false
   })
 
   xit('3.2 - Stack Min', function() {

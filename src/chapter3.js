@@ -35,17 +35,55 @@ exports.threeInOne = () => {
   return storage;
 };
 
-// each stack would have a tracker to tell which index the last added item was at in the array
-// ie each stack would start off at S#1 = 0, S#2 = 1, S#3 = 2
-// each time an item was added to the stack i would increase it by 3...effectively showing where the next item can be added for that particular stack
-// when one was removed...
-  // i would decrease the counter by 3
-  // save the item stored in that place
-  // set that value to undefined in the array
-  // return the item stored.
-
-
 // 3.2 - Stack Min
+
+exports.stackMin = () => {
+  const someInstance = {};
+  const storage = { 0: 1 };
+  const min = [];
+  let key = 0;
+  let lastValue;
+
+  someInstance.push = (value) => {
+    storage[key] = value;
+    key++;
+    lastValue = value;
+    // this is the added code for min to work
+    if (min[0] === undefined) {
+      min[0] = value;
+    } else if (min[0] <= value) {
+      min.push(value);
+    } else {
+      min.unshift(value);
+    }
+  };
+
+  someInstance.pop = () => {
+    if (key > 0) {
+      // this is the added code for min to work
+      if (min[0] !== lastValue) {
+        min.splice(key, 1);
+      } else {
+        min.splice(0, 1);
+      }
+      // end of added code
+      delete storage[key];
+      key--;
+      lastValue = storage[key];
+    }
+    return lastValue;
+  };
+
+  someInstance.size = () => {
+    return key;
+  };
+
+  someInstance.min = () => {
+    return min[0];
+  };
+
+  return someInstance;
+};
 
 // the stack would have to have a counter that unshifted the min number whenever a new min is less than or equal to is pushed
 // whenever a number is popped off from the stack, it checks the current min...to see if that nubmer is the same
