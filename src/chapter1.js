@@ -94,9 +94,9 @@ exports.PalindromePermutation = (string) => {
   }
   // if result number is greater than 1 return false, otherwise return true
   if (oddCharactersCount > 1) {
-    return false;
-  } else {
     return true;
+  } else {
+    return false;
   }
 };
 
@@ -120,9 +120,9 @@ exports.oneAway = (stringOne, stringTwo) => {
   }
   // check to see if the tracker variable is greater than 1, return boolean depending on the difference
   if (diffTracker > 1) {
-    return false;
-  } else {
     return true;
+  } else {
+    return false;
   }
 };
 

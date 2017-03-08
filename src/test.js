@@ -3,8 +3,8 @@
 const expect = require('chai').expect;
 const chapterOne = require('./chapter1');
 const chapterTwo = require('./chapter2');
-const chapterThree = require('./chapter3');
-const chapterFour = require('./chapter4');
+// const chapterThree = require('./chapter3');
+// const chapterFour = require('./chapter4');
 
 // =================================================
 // =================================================
@@ -24,32 +24,35 @@ describe('Chapter One', function() {
   })
 
   it('1.3 - URLify', function() {
-      expect(true).to.be.false;
-    })
+      expect(chapterOne.uRLify('Mr John Smith      ', 13)).to.equal('Mr%20John%20Smith');
+  })
   
   it('1.4 - Palindrome Permutation', function() {
-      expect(true).to.be.false;
-    })
+      expect(chapterOne.PalindromePermutation('Tact Coa')).to.be.true;
+  })
   
   it('1.5 - One Away', function() {
-      expect(true).to.be.false;
-    })
+      expect(chapterOne.oneAway('pale', 'ple')).to.be.true;
+      expect(chapterOne.oneAway('pales', 'pale')).to.be.true;
+      expect(chapterOne.oneAway('pale', 'bale')).to.be.true;
+      expect(chapterOne.oneAway('pale', 'bake')).to.be.false;
+  })
   
   xit('1.6 - String Compression', function() {
       
-    })
+  })
   
   xit('1.7 - Rotate Matrix', function() {
       
-    })
+  })
 
   xit('1.8 - Zero Matrix', function() {
       
-    })
+  })
 
   xit('1.9 - String Rotation', function() {
       
-    })
+  })
 })
 
 describe('Chapter Two', function() {
@@ -64,27 +67,27 @@ describe('Chapter Two', function() {
 
   it('2.3 - Delete Middle Node', function() {
       expect(true).to.be.false;
-    })
+  })
   
   it('2.4 - Partition', function() {
       expect(true).to.be.false;
-    })
+  })
   
   it('2.5 - Sum Lists', function() {
       expect(true).to.be.false;
-    })
+  })
   
   xit('2.6 - Palindrome', function() {
       
-    })
+  })
   
   xit('2.7 - Intersection', function() {
       
-    })
+  })
 
   xit('2.8 - Loop Detection', function() {
       
-    })
+  })
 })
 
 describe('Chapter Three', function() {
