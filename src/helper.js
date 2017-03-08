@@ -1,14 +1,14 @@
 var exports = module.exports = {};
 
 exports.LinkedList = function() {
-  var Node = function(value) {
-    var node = {};
+var Node = function(value) {
+  var node = {};
 
-    node.value = value;
-    node.next = null;
+  node.value = value;
+  node.next = null;
 
-    return node;
-  };
+  return node;
+};
   
   var list = {};
   list.head = null;

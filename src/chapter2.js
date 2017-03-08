@@ -1,4 +1,5 @@
 var exports = module.exports = {};
+const helper = require('./helper')
 // === CHAPTER 2 === //
 
 // 2.1 - Remove Dups
@@ -61,24 +62,47 @@ exports.partition = (linkedList, partitionNum) => {
 };
 
 // 2.5 - Sum Lists
-exports.SumLists = (linkedListOne, LinkedListTwo) => {
-  let carryOver = 0;
-  let nodeOne = linkedListOne;
-  let nodeTwo = LinkedListTwo;
-  const result = {};
-  let resultValue = result;
-  while (nodeOne.next != null && nodeTwo.next != null) {
-    if ((nodeOne.value + nodeTwo.value + carryOver) < 10) {
-      resultValue.value = nodeOne.value + nodeTwo.value + carryOver;
-      carryOver = 0;
-    } else {
-      resultValue.value = 10 - nodeOne.value + nodeTwo.value + carryOver;
-      carryOver = 1;
-    }
+exports.sumLists = (linkedListOne, LinkedListTwo) => {
+  let nodeOne = linkedListOne.head;
+  let nodeTwo = LinkedListTwo.head;
+  const result = helper.LinkedList();
+  while (nodeOne != null) {
+  
+    result.addToTail(nodeOne.value);
     nodeOne = nodeOne.next;
-    nodeTwo = nodeTwo.next;
-    resultValue =resultValue.next;
   }
+
+  let resultNode = result.head;
+  while (nodeTwo != null) {
+    if (resultNode.next === null) {
+      result.addToTail(0);
+    }
+    if (resultNode.value + nodeTwo.value < 10) {
+      resultNode.value = resultNode.value + nodeTwo.value;
+      resultNode = resultNode.next;
+      nodeTwo = nodeTwo.next;
+    } else {
+      resultNode.value = 10 - resultNode.value + nodeTwo.value;
+      resultNode.next.value = resultNode.next.value + 1;
+      resultNode = resultNode.next;
+      nodeTwo = nodeTwo.next;
+    }
+  }
+
+  // let resultValue = result;
+  // while (nodeOne != null || nodeTwo != null) {
+  //   if ((nodeOne.value + nodeTwo.value + carryOver) < 10) {
+  //     resultValue.value = nodeOne.value + nodeTwo.value + carryOver;
+  //     carryOver = 0;
+  //   } else {
+  //     resultValue.value = 10 - nodeOne.value + nodeTwo.value + carryOver;
+  //     carryOver = 1;
+  //   }
+  //   nodeOne = nodeOne.next;
+  //   nodeTwo = nodeTwo.next;
+  //   resultValue =resultValue.next;
+  // }
+  console.log(result.head.value)
   return result;
 };
 

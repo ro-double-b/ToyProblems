@@ -10,7 +10,7 @@ const chapterTwo = require('./chapter2');
 // =================================================
 // =================================================
 
-describe('Chapter One', function() {
+describe('Chapter One: Arrays and Strings', function() {
 
   it('1.1 - Is Unique', function() {
     expect(chapterOne.isUnique('abc')).to.be.true;
@@ -56,7 +56,7 @@ describe('Chapter One', function() {
   })
 })
 
-describe('Chapter Two', function() {
+describe('Chapter Two: Linked Lists', function() {
 
   it('2.1 - Remove Dups', function() {
     // check to make sure that dup is removed
@@ -119,13 +119,25 @@ describe('Chapter Two', function() {
     expect(result.head.next.value).to.be.below(5)
     expect(result.head.next.next.value).to.be.below(5)
     expect(result.head.next.next.next.value).to.be.at.least(5)
-    // expect(result.head.next.next.next.next.value).to.be.at.least(5)
-    // expect(result.head.next.next.next.next.next.value).to.be.at.least(5)
-    // expect(result.tail.value).to.be.at.least(5)
+    expect(result.head.next.next.next.next.value).to.be.at.least(5)
+    expect(result.head.next.next.next.next.next.value).to.be.at.least(5)
+    expect(result.tail.value).to.be.at.least(5)
   })
   
-  xit('2.5 - Sum Lists', function() {
-      expect(true).to.be.false;
+  it('2.5 - Sum Lists', function() {
+      var listOne = helper.LinkedList()
+      listOne.addToTail(7)
+      listOne.addToTail(1)
+      listOne.addToTail(6)
+
+      var listTwo = helper.LinkedList()
+      listTwo.addToTail(5)
+      listTwo.addToTail(9)
+      listTwo.addToTail(2)
+
+      var solution = chapterTwo.sumLists(listOne, listTwo)
+      console.log(solution, 'ehehe')
+      expect(solution.head.value).to.be(2)
   })
   
   xit('2.6 - Palindrome', function() {
@@ -141,7 +153,7 @@ describe('Chapter Two', function() {
   })
 })
 
-describe('Chapter Three', function() {
+describe('Chapter Three: Stacks and Queues', function() {
 
   xit('3.1 - Three in One', function() {
     
