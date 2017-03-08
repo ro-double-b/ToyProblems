@@ -1,7 +1,8 @@
+var exports = module.exports = {};
 // === CHAPTER 1 === //
 
 // 1.1 - Is Unique
-const isUnique = (string) => {
+exports.isUnique = (string) => {
   // double loop over string
   for (let i = 0; i < string.length; i++) {
     for (let j = 0; j < string.length; j++) {
@@ -15,7 +16,7 @@ const isUnique = (string) => {
 };
 
 // 1.2 - Check Permutation
-const checkPermutation = (stringOne, stringTwo) => {
+exports.checkPermutation = (stringOne, stringTwo) => {
   const resultObj = {};
   // check to make sure both strings are equal
   if (stringOne.length !== stringTwo.length) {
@@ -49,7 +50,7 @@ const checkPermutation = (stringOne, stringTwo) => {
 };
 
 // 1.3 - URLify
-const uRLify = (string, length) => {
+exports.uRLify = (string, length) => {
   // create an array to store all the characters
   const result = [];
   // iterate over each letter in string using the lenght input
@@ -67,7 +68,7 @@ const uRLify = (string, length) => {
 };
 
 // 1.4 - Palindrome Permutation
-const PalindromePermutation = (string) => {
+exports.PalindromePermutation = (string) => {
   // declare a object variable to store number of characters
   const characterObj = {};
   // declare a result number to store how many odd numbers there are; set to 0
@@ -100,7 +101,7 @@ const PalindromePermutation = (string) => {
 };
 
 // 1.5 - One Away
-const oneAway = (stringOne, stringTwo) => {
+exports.oneAway = (stringOne, stringTwo) => {
   let diffTracker = 0;
   const addHelper = (longer, shorter) => {
     // at first place of difference add the variance and invoke the two new variables with the difference helper function
@@ -133,7 +134,3 @@ const oneAway = (stringOne, stringTwo) => {
 
 // 1.9 - String Rotation
 
-
-exports.test = {
-  c1q1: isUnique,
-}
