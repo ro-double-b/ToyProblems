@@ -107,22 +107,26 @@ exports.oneAway = (stringOne, stringTwo) => {
     // at first place of difference add the variance and invoke the two new variables with the difference helper function
     for (let i = 0; i < longer.length; i++) {
       if (longer[i] !== shorter[i]) {
-        shorter.slice(i, 0, longer[i]);
-        diffTracker++;
+        if (longer.length !== shorter.length) {
+          shorter.splice(i, 0, longer[i]);
+          diffTracker++;
+        } else {
+          diffTracker++;
+        }
       }
     }
   };
-  // check to see if two strings are equal lenght
+  // check to see if two strings are equal length
   if (stringOne.length !== stringTwo.length && stringOne.length > stringTwo.length) {
-    addHelper(stringOne, stringTwo);
+    addHelper(stringOne.split(''), stringTwo.split(''));
   } else {
-    addHelper(stringTwo, stringOne);
+    addHelper(stringTwo.split(''), stringOne.split(''));
   }
   // check to see if the tracker variable is greater than 1, return boolean depending on the difference
   if (diffTracker > 1) {
-    return true;
-  } else {
     return false;
+  } else {
+    return true;
   }
 };
 
