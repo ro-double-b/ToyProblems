@@ -132,3 +132,8 @@ const oneAway = (stringOne, stringTwo) => {
 // 1.8 - Zero Matrix
 
 // 1.9 - String Rotation
+
+
+exports.test = {
+  c1q1: isUnique,
+}

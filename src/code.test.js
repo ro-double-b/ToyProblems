@@ -1,12 +1,12 @@
 /* eslint-disable */ 
 
 const expect = require('chai').expect;
-const Code = require('./Code');
+const code = require('./Code');
 
 describe('Chapter One', function() {
   
   it('1.1 - Is Unique', function() {
-    expect(true).to.be.true;
+    expect(code.test.c1q1('abc')).to.be.true;
   })
 
   it('1.2 - Check Permutation', function() {
