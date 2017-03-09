@@ -13,11 +13,11 @@ exports.threeInOne = () => {
     stack.push = (value) => {
       storage.stackStorage[position] = value;
       position = position + 3;
-      console.log('push position', position);
+      // console.log('push position', position);
     };
 
     stack.pop = () => {
-      console.log('pop position', position);
+      // console.log('pop position', position);
       if (position >= 2) {
         const temp = storage.stackStorage[position - 3];
         delete storage.stackStorage[position - 3];
@@ -104,6 +104,35 @@ exports.stackMin = () => {
 
 // 3.4 - Queue via Stacks
 
+exports.MyQueue = () => {
+  const obj = {};
+
+  obj.stack1 = helper.Stack();
+  obj.stack2 = helper.Stack();
+  obj.counter = 0;
+
+  obj.enqueue = (value) => {
+    obj.stack1.push(value);
+    obj.counter = obj.counter + 1;
+  };
+
+  obj.dequeue = () => {
+    if (obj.counter <= 1) {
+      obj.stack1.pop();
+    } else {
+      for (let i = 0; i < (obj.counter - 1); i++) {
+        obj.stack2.push(obj.stack1.pop());
+      }
+      const temp = obj.stack1.pop();
+      for (let i = 0; i < obj.counter; i++) {
+        obj.stack1.push(obj.stack2.pop());
+      }
+      return temp;
+    }
+  };
+  return obj;
+};
+
 // when an item is enqued, it will be pushed into the stack #1
 // when an item is dequed...
   // every item in stack #1 will be poped
@@ -123,3 +152,4 @@ exports.stackMin = () => {
 
 
 // 3.6 - Animal Shelter
+
