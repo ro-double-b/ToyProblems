@@ -164,8 +164,8 @@ describe('Chapter Three: Stacks and Queues', function() {
     expect(true).to.be.false  
   })
 
-  xit('3.3 - Stack of Plates', function() {
-
+  it('3.3 - Stack of Plates', function() {
+    expect(true).to.be.false
   })
   
   it('3.4 - Queue via Stacks', function() {
