@@ -4,7 +4,7 @@ const expect = require('chai').expect;
 const helper = require('./helper')
 const chapterOne = require('./chapter1');
 const chapterTwo = require('./chapter2');
-// const chapterThree = require('./chapter3');
+const chapterThree = require('./chapter3');
 // const chapterFour = require('./chapter4');
 
 // =================================================
@@ -125,19 +125,20 @@ describe('Chapter Two: Linked Lists', function() {
   })
   
   it('2.5 - Sum Lists', function() {
-      var listOne = helper.LinkedList()
-      listOne.addToTail(7)
-      listOne.addToTail(1)
-      listOne.addToTail(6)
+  expect(true).to.be.false
+  //     var listOne = helper.LinkedList()
+  //     listOne.addToTail(7)
+  //     listOne.addToTail(1)
+  //     listOne.addToTail(6)
 
-      var listTwo = helper.LinkedList()
-      listTwo.addToTail(5)
-      listTwo.addToTail(9)
-      listTwo.addToTail(2)
+  //     var listTwo = helper.LinkedList()
+  //     listTwo.addToTail(5)
+  //     listTwo.addToTail(9)
+  //     listTwo.addToTail(2)
 
-      var solution = chapterTwo.sumLists(listOne, listTwo)
-      console.log(solution, 'ehehe')
-      expect(solution.head.value).to.be(2)
+  //     var solution = chapterTwo.sumLists(listOne, listTwo)
+  //     console.log(solution, 'ehehe')
+  //     expect(solution.head.value).to.be(2)
   })
   
   xit('2.6 - Palindrome', function() {
@@ -155,19 +156,32 @@ describe('Chapter Two: Linked Lists', function() {
 
 describe('Chapter Three: Stacks and Queues', function() {
 
-  xit('3.1 - Three in One', function() {
-    
+  it('3.1 - Three in One', function() {
+    expect(true).to.be.false
   })
 
-  xit('3.2 - Stack Min', function() {
-    
+  it('3.2 - Stack Min', function() {
+    expect(true).to.be.false  
   })
 
   xit('3.3 - Stack of Plates', function() {
 
   })
   
-  xit('3.4 - Queue via Stacks', function() {
+  it('3.4 - Queue via Stacks', function() {
+    var regularStack = helper.Queue()
+    var queueStack = chapterThree.MyQueue()
+    
+    regularStack.enqueue(1)
+    queueStack.enqueue(1)
+    regularStack.enqueue(2)
+    queueStack.enqueue(2)
+    regularStack.enqueue(3)
+    queueStack.enqueue(3)
+
+    expect(regularStack.dequeue()).to.equal(queueStack.dequeue())
+    expect(regularStack.dequeue()).to.equal(queueStack.dequeue())
+    expect(regularStack.dequeue()).to.equal(queueStack.dequeue())
 
   })
   
@@ -178,4 +192,56 @@ describe('Chapter Three: Stacks and Queues', function() {
   xit('3.6 - Animal Shelter', function() {
 
   })
+})
+
+describe('Chapter Four: Trees and Graphs', function() {
+
+  xit('4.1 - Route Between Nodes', function() {
+    
+  })
+
+  xit('4.2 - Minimal Tree', function() {
+    
+  })
+
+  xit('4.3 - List of Depths', function() {
+
+  })
+  
+  xit('4.4 - Check Balanced', function() {
+
+  })
+  
+  xit('4.5 - Validate BST', function() {
+
+  })
+  
+  xit('4.6 - Successor', function() {
+
+  })
+
+  xit('4.7 - Build Order', function() {
+    
+  })
+
+  xit('4.8 - First Common Ancestor', function() {
+    
+  })
+
+  xit('4.9 - BST Sequences', function() {
+
+  })
+  
+  xit('4.10 - Check Subtree', function() {
+
+  })
+  
+  xit('4.11 - Random Node', function() {
+
+  })
+  
+  xit('4.12 - Path with Sum', function() {
+
+  })
+
 })

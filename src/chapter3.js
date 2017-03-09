@@ -1,20 +1,89 @@
-// var exports = module.exports = {};
+var exports = module.exports = {};
+const helper = require('./helper')
 // === CHAPTER 3 === //
 
 // 3.1 - Three in One
 
-// each stack would alternate in the array...
-// each stack would have a tracker to tell which index the last added item was at in the array
-// ie each stack would start off at S#1 = 0, S#2 = 1, S#3 = 2
-// each time an item was added to the stack i would increase it by 3...effectively showing where the next item can be added for that particular stack
-// when one was removed...
-  // i would decrease the counter by 3
-  // save the item stored in that place
-  // set that value to undefined in the array
-  // return the item stored.
+exports.threeInOne = () => {
+  const storage = {};
+  storage.stackStorage = [];
+  const ArrStack = (numberInArr) => {
+    const stack = {};
+    let position = numberInArr;
+    stack.push = (value) => {
+      storage.stackStorage[position] = value;
+      position = position + 3;
+      // console.log('push position', position);
+    };
 
+    stack.pop = () => {
+      // console.log('pop position', position);
+      if (position >= 2) {
+        const temp = storage.stackStorage[position - 3];
+        delete storage.stackStorage[position - 3];
+        position = position - 3;
+        return temp;
+      }
+    };
+    return stack;
+  };
+
+  storage.one = ArrStack(0);
+  storage.two = ArrStack(1);
+  storage.three = ArrStack(2);
+
+  return storage;
+};
 
 // 3.2 - Stack Min
+
+exports.stackMin = () => {
+  const someInstance = {};
+  const storage = { 0: 1 };
+  const min = [];
+  let key = 0;
+  let lastValue;
+
+  someInstance.push = (value) => {
+    storage[key] = value;
+    key++;
+    lastValue = value;
+    // this is the added code for min to work
+    if (min[0] === undefined) {
+      min[0] = value;
+    } else if (min[0] <= value) {
+      min.push(value);
+    } else {
+      min.unshift(value);
+    }
+  };
+
+  someInstance.pop = () => {
+    if (key > 0) {
+      // this is the added code for min to work
+      if (min[0] !== lastValue) {
+        min.splice(key, 1);
+      } else {
+        min.splice(0, 1);
+      }
+      // end of added code
+      delete storage[key];
+      key--;
+      lastValue = storage[key];
+    }
+    return lastValue;
+  };
+
+  someInstance.size = () => {
+    return key;
+  };
+
+  someInstance.min = () => {
+    return min[0];
+  };
+
+  return someInstance;
+};
 
 // the stack would have to have a counter that unshifted the min number whenever a new min is less than or equal to is pushed
 // whenever a number is popped off from the stack, it checks the current min...to see if that nubmer is the same
@@ -35,6 +104,35 @@
 
 // 3.4 - Queue via Stacks
 
+exports.MyQueue = () => {
+  const obj = {};
+
+  obj.stack1 = helper.Stack();
+  obj.stack2 = helper.Stack();
+  obj.counter = 0;
+
+  obj.enqueue = (value) => {
+    obj.stack1.push(value);
+    obj.counter = obj.counter + 1;
+  };
+
+  obj.dequeue = () => {
+    if (obj.counter <= 1) {
+      obj.stack1.pop();
+    } else {
+      for (let i = 0; i < (obj.counter - 1); i++) {
+        obj.stack2.push(obj.stack1.pop());
+      }
+      const temp = obj.stack1.pop();
+      for (let i = 0; i < obj.counter; i++) {
+        obj.stack1.push(obj.stack2.pop());
+      }
+      return temp;
+    }
+  };
+  return obj;
+};
+
 // when an item is enqued, it will be pushed into the stack #1
 // when an item is dequed...
   // every item in stack #1 will be poped
@@ -54,3 +152,4 @@
 
 
 // 3.6 - Animal Shelter
+
