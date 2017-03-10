@@ -254,3 +254,64 @@ describe('Chapter Four: Trees and Graphs', function() {
   })
 
 })
+
+describe('Chapter Eight: Recursion and Dynamic Programing', function() {
+
+  it('8.1 - Triple Step', function() {
+    epxect(true).to.be.false 
+
+  })
+
+  it('8.2 - Robot in a Grid', function() {
+    expect(true).to.be.false  
+  })
+
+  it('8.3 - Magic Index', function() {
+    expect(true).to.be.false  
+  })
+  
+  xit('8.4 - Power Set', function() {
+    
+  })
+  
+  it('8.5 - Recursive Multiply', function() {
+    expect(true).to.be.false
+  })
+  
+  xit('8.6 - Towers of Hanoi', function() {
+
+  })
+
+  xit('8.7 - Permutations without Dups', function() {
+    
+  })
+
+  xit('8.8 - Permutations with Dups', function() {
+    
+  })
+
+  xit('8.9 - Parens', function() {
+
+  })
+  
+  xit('8.10 - Paint Fill', function() {
+
+  })
+  
+  xit('8.11 - Coins', function() {
+
+  })
+  
+  xit('8.12 - Eight Queens', function() {
+
+  })
+
+  xit('8.13 - Stack of Boxes', function() {
+
+  })
+
+  xit('8.14 - Boolean Evaluation', function() {
+
+  })
+
+})
