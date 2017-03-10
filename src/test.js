@@ -266,8 +266,8 @@ describe('Chapter Eight: Recursion and Dynamic Programing', function() {
     expect(true).to.be.false  
   })
 
-  xit('8.3 - Magic Index', function() {
-    
+  it('8.3 - Magic Index', function() {
+    expect(true).to.be.false  
   })
   
   xit('8.4 - Power Set', function() {

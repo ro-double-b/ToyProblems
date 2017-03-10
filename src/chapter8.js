@@ -42,7 +42,23 @@ exports.robotInAGridNoLimit = (r, c) => {
 };
 
 // 8.3 - Magic Index
-// I am not sure why you would just not iterate over the magic index with a for loop, will come back to this problem
+exports.magicIndex = (array, length) => {
+  if (length === undefined) {
+    length = 0;
+  }
+  const midpoint = Math.floor(array.length / 2);
+  const arrayMidpoint = length + midpoint;
+  if (arrayMidpoint === array[midpoint]) {
+    return array[midpoint];
+  } else if (array[midpoint] > arrayMidpoint) {
+    const lowerArr = array.slice(0, midpoint);
+    return exports.magicIndex(lowerArr, 0);
+  } else if (array[midpoint] < arrayMidpoint) {
+    const higherArr = array.slice(midpoint);
+    return exports.magicIndex(higherArr, midpoint);
+  }
+  return - 1;
+};
 
 // 8.4 - Power Set
 
