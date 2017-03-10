@@ -55,7 +55,7 @@ exports.magicIndex = (array, length) => {
     return exports.magicIndex(lowerArr, 0);
   } else if (array[midpoint] < arrayMidpoint) {
     const higherArr = array.slice(midpoint);
-    return exports.magicIndex(higherArr, midpoint);
+    return exports.magicIndex(higherArr, midpoint + length);
   }
   return - 1;
 };
