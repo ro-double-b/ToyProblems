@@ -64,8 +64,12 @@ exports.magicIndex = (array, length) => {
 
 // 8.5 - Recursive Multiply
 exports.recursiveMultiply = (int1, int2) => {
-  if (int2 !== 0) {
-    return exports.recursiveMultiply(int1 + int2, int2 - 1);
+  if (int2 > 1) {
+    if (int1 === 1) {
+      return exports.recursiveMultiply(int2, int2 - 1);
+    } else {
+      return exports.recursiveMultiply(int1 + int2, int2 - 1);
+    }
   } else {
     return int1;
   }

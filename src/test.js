@@ -6,6 +6,7 @@ const chapterOne = require('./chapter1');
 const chapterTwo = require('./chapter2');
 const chapterThree = require('./chapter3');
 const chapterFour = require('./chapter4');
+const chapterEight = require('./chapter8');
 
 // =================================================
 // =================================================
@@ -275,7 +276,10 @@ describe('Chapter Eight: Recursion and Dynamic Programing', function() {
   })
   
   it('8.5 - Recursive Multiply', function() {
-    expect(true).to.be.false
+    expect(chapterEight.recursiveMultiply(2, 2)).to.be.equal(4)
+    expect(chapterEight.recursiveMultiply(1, 2)).to.be.equal(2)
+    expect(chapterEight.recursiveMultiply(2, 1)).to.be.equal(2)
+    expect(chapterEight.recursiveMultiply(2, 2)).to.be.equal(4)
   })
   
   xit('8.6 - Towers of Hanoi', function() {
