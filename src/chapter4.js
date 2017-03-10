@@ -27,7 +27,6 @@ exports.routeBetweenNodes = (graph, nodeOne, nodeTwo) => {
 exports.minimalTree = (array) => {
   const midpoint = Math.floor(array.length /2);
   const searchTree = Tree(array[midpoint]);
-  
   const innerFunction = (node, array1, array2) => {
     if (array1.length >= 1) {
       const midpoint1 = Math.floor(array1.length / 2);
@@ -47,9 +46,46 @@ exports.minimalTree = (array) => {
 
 // 4.3 - List of Depths
 
+exports.listOfDepths = (tree) => {
+  // starting with an array of an arrays until I solve the problem, will implement with linked lists after
+  const result = [];
+  const innerFunction = (node, depth) => {
+    if (result[depth] === undefined) {
+      result[depth] = [];
+    }
+    result[depth].push(node.value);
+    for (let i = 0; i < node.children.length; i++) {
+      innerFunction(node.children[i], depth + 1);
+    }
+  };
+  innerFunction(tree, 0);
+  return result;
+};
+
 // 4.4 - Check Balanced
 
+exports.checkBalanced = (tree) => {
+  const depths = [];
+  const innerFunction = (node, depth) => {
+    if (node.children === undefined) {
+      depths.push(depth);
+    }
+    for (let i = 0; node.children.length; i++) {
+      innerFunction(node.children[i], depth + 1);
+    }
+  };
+  innerFunction(tree, 0);
+  if ((Math.max.apply(null, depths) - Math.min.apply(null, depths)) <= 1) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 // 4.5 - Validate BST
+
+// realized that the search tree needs to ensure that 0 is left and 1 is right, currently...
+// my functions are not doing that and therefore will not work to balidate the BST
 
 // 4.6 - Successor
 

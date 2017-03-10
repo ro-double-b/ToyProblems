@@ -105,6 +105,30 @@ exports.Queue = () => {
   return someInstance;
 };
 
+exports.Tree = (value) => {
+  const newTree = {};
+  newTree.value = value;
+  newTree.children = [];
+
+  newTree.addChild = (value) => {
+    const child = Tree(value);
+    newTree.children.push(child);
+  };
+
+  newTree.contains = (target) => {
+    if (newTree.value === target) {
+      return true;
+    }
+    for (let i = 0; i < newTree.children.length; i++) {
+      let child = newTree.children[i];
+      if (child.contains(target)) {
+        return true;
+      }
+    }
+  };
+  return newTree;
+};
+
 exports.Graph = () => {
   const obj = {};
   obj.values = [];

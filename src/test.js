@@ -209,16 +209,16 @@ describe('Chapter Four: Trees and Graphs', function() {
 
   })
 
-  xit('4.2 - Minimal Tree', function() {
-    
+  it('4.2 - Minimal Tree', function() {
+    expect(true).to.be.false  
   })
 
-  xit('4.3 - List of Depths', function() {
-
+  it('4.3 - List of Depths', function() {
+    expect(true).to.be.false
   })
   
-  xit('4.4 - Check Balanced', function() {
-
+  it('4.4 - Check Balanced', function() {
+    expect(true).to.be.false
   })
   
   xit('4.5 - Validate BST', function() {
