@@ -147,12 +147,10 @@ exports.Graph = () => {
     obj.edges = obj.edges.slice(0, idx).concat(obj.edges.slice(idx + 1, obj.edges.length));
   };
 
-  obj.forEachNode = (cb) => {
-    return obj.values.map(cb)
-  }
+  // obj.forEachNode = (cb) => {
+  //   return obj.values.map(cb)
+  // }
 
   return obj;
 };
-
-
 

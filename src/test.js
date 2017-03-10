@@ -5,7 +5,7 @@ const helper = require('./helper')
 const chapterOne = require('./chapter1');
 const chapterTwo = require('./chapter2');
 const chapterThree = require('./chapter3');
-// const chapterFour = require('./chapter4');
+const chapterFour = require('./chapter4');
 
 // =================================================
 // =================================================
@@ -196,8 +196,17 @@ describe('Chapter Three: Stacks and Queues', function() {
 
 describe('Chapter Four: Trees and Graphs', function() {
 
-  xit('4.1 - Route Between Nodes', function() {
-    
+  it('4.1 - Route Between Nodes', function() {
+    var graph = helper.Graph()
+    graph.addNode(1)
+    graph.addNode(2)
+    graph.addNode(3)
+    graph.addEdge(1, 2)
+    graph.addEdge(2, 3)
+    expect(chapterFour.routeBetweenNodes(graph, 1, 3)).to.be.true
+    expect(chapterFour.routeBetweenNodes(graph, 1, 2)).to.be.true
+    expect(chapterFour.routeBetweenNodes(graph, 1, 4)).to.be.false
+
   })
 
   xit('4.2 - Minimal Tree', function() {

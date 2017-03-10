@@ -1,6 +1,26 @@
+var exports = module.exports = {};
+const helper = require('./helper');
+
 // === CHAPTER 4 === //
 
 // 4.1 - Route Between Nodes
+
+exports.routeBetweenNodes = (graph, nodeOne, nodeTwo) => {
+  let result = false;
+  const innerFunction = (node1, node2) => {
+    graph.edges.forEach((index) => {
+      if (index[0] === node1) {
+        if (index[1] === node2) {
+          result = true;
+        } else {
+          innerFunction(index[1], nodeTwo);
+        }
+      }
+    });
+  };
+  innerFunction(nodeOne, nodeTwo);
+  return result;
+};
 
 // 4.2 - Minimal Tree
 
