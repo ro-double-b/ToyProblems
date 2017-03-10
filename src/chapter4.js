@@ -5,7 +5,28 @@ const helper = require('./helper');
 
 // 4.1 - Route Between Nodes
 
+exports.routeBetweenNodes = (graph, nodeOne, nodeTwo) => {
+  let result = false;
+  const innerFunction = (node1, node2) => {
+    graph.edges.forEach((index) => {
+      if (index[0] === node1) {
+        if (index[1] === node2) {
+          result = true;
+        } else {
+          innerFunction(index[1], nodeTwo);
+        }
+      }
+    });
+  };
+  innerFunction(nodeOne, nodeTwo);
+  return result;
+};
 
+// 4.2 - Minimal Tree
+
+exports.minimalTree = (array) => {
+  
+}
 
 // 4.3 - List of Depths
 
