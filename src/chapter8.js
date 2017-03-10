@@ -42,10 +42,18 @@ exports.robotInAGridNoLimit = (r, c) => {
 };
 
 // 8.3 - Magic Index
+// I am not sure why you would just not iterate over the magic index with a for loop, will come back to this problem
 
 // 8.4 - Power Set
 
 // 8.5 - Recursive Multiply
+exports.recursiveMultiply = (int1, int2) => {
+  if (int2 !== 0) {
+    return exports.recursiveMultiply(int1 + int2, int2 - 1);
+  } else {
+    return int1;
+  }
+};
 
 // 8.6 - Towers of Hanoi
 

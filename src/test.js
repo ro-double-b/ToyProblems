@@ -274,8 +274,8 @@ describe('Chapter Eight: Recursion and Dynamic Programing', function() {
     
   })
   
-  xit('8.5 - Recursive Multiply', function() {
-
+  it('8.5 - Recursive Multiply', function() {
+    expect(true).to.be.false
   })
   
   xit('8.6 - Towers of Hanoi', function() {
