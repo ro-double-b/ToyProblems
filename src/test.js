@@ -259,7 +259,10 @@ describe('Chapter Four: Trees and Graphs', function() {
 describe('Chapter Eight: Recursion and Dynamic Programing', function() {
 
   it('8.1 - Triple Step', function() {
-    epxect(true).to.be.false 
+    expect(chapterEight.tripleStep(1)).to.be.equal(1)
+    expect(chapterEight.tripleStep(2)).to.be.equal(2)
+    expect(chapterEight.tripleStep(3)).to.be.equal(4) 
+    expect(chapterEight.tripleStep(4)).to.be.equal(7)
 
   })
 
