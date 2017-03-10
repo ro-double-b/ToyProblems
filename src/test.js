@@ -257,13 +257,13 @@ describe('Chapter Four: Trees and Graphs', function() {
 
 describe('Chapter Eight: Recursion and Dynamic Programing', function() {
 
-  xit('8.1 - Triple Step', function() {
-   
+  it('8.1 - Triple Step', function() {
+    epxect(true).to.be.false 
 
   })
 
-  xit('8.2 - Robot in a Grid', function() {
-    
+  it('8.2 - Robot in a Grid', function() {
+    expect(true).to.be.false  
   })
 
   xit('8.3 - Magic Index', function() {
