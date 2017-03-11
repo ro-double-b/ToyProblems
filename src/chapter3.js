@@ -85,11 +85,37 @@ exports.stackMin = () => {
   return someInstance;
 };
 
-// the stack would have to have a counter that unshifted the min number whenever a new min is less than or equal to is pushed
-// whenever a number is popped off from the stack, it checks the current min...to see if that nubmer is the same
-  // if it is then the min number is then removed and the next min number is next in line
-
 // 3.3 - Stack of Plates
+exports.stackOfPlates = (stackMaxHeight)=> {
+  const obj = {};
+  obj.stacks = [];
+  obj.curStack = 0;
+  obj.curStackHeight = 0;
+  obj.stackMax = stackMaxHeight;
+
+  obj.stacks.push(helper.Stack());
+
+  obj.push = (value) => {
+    obj.stacks[obj.curStack].push(value);
+    obj.curStackHeight++;
+    if (obj.curStackHeight === obj.stackMax) {
+      obj.curStack++;
+      obj.curStackHeight = 0;
+      obj.stacks[obj.curStack].push(helper.Stack());
+    }
+  };
+
+  obj.pop = () => {
+    if (obj.curStackHeight === 0) {
+      obj.curStack = obj.curStack - 1;
+      obj.curStackHeight = obj.stackMax;
+    }
+    obj.stacks[obj.curStack].pop();
+    obj.curStackHeight = obj.curStackHeight - 1;
+  };
+
+  return obj;
+};
 
 // would create an array of stacks
 // there would be a counter to track the index of the last stack used
