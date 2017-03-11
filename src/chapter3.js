@@ -94,24 +94,29 @@ exports.stackOfPlates = (stackMaxHeight)=> {
   obj.stackMax = stackMaxHeight;
 
   obj.stacks.push(helper.Stack());
-
+  // obj.stacks.push(helper.Stack());
+  // console.log(obj.stacks)
   obj.push = (value) => {
-    obj.stacks[obj.curStack].push(value);
-    obj.curStackHeight++;
-    if (obj.curStackHeight === obj.stackMax) {
+    if ((obj.curStackHeight) === obj.stackMax) {
       obj.curStack++;
       obj.curStackHeight = 0;
-      obj.stacks[obj.curStack].push(helper.Stack());
+      obj.stacks.push(helper.Stack());
+
     }
+      obj.stacks[obj.curStack].push(value);
+      obj.curStackHeight++;
+    
   };
 
   obj.pop = () => {
     if (obj.curStackHeight === 0) {
+      obj.stacks.splice(obj.stacks.length - 1)
       obj.curStack = obj.curStack - 1;
       obj.curStackHeight = obj.stackMax;
     }
-    obj.stacks[obj.curStack].pop();
+    const test = obj.stacks[obj.curStack].pop();
     obj.curStackHeight = obj.curStackHeight - 1;
+    return test
   };
 
   return obj;
