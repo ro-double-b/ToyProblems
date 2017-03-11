@@ -40,7 +40,8 @@ describe('Chapter One: Arrays and Strings', function() {
       expect(chapterOne.oneAway('pale', 'bake')).to.be.false;
   })
   
-  xit('1.6 - String Compression', function() {
+  it('1.6 - String Compression', function() {
+
       
   })
   

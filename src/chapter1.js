@@ -131,6 +131,28 @@ exports.oneAway = (stringOne, stringTwo) => {
 };
 
 // 1.6 - String Compression
+exports.stringCompression = (string) => {
+  const compressed = [];
+  let counter = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (i === 0) {
+      compressed.push(string[i]);
+      counter++;
+    } else if (string[i - 1] === string[i]) {
+      counter++;
+    } else {
+      compressed.push(counter);
+      counter = 1;
+      compressed.push(string[i]);
+    }
+  }
+  compressed.push(counter);
+  if (compressed.length > string.length) {
+    return string;
+  } else {
+    return compressed.join('');
+  }
+};
 
 // 1.7 - Rotate Matriz
 
