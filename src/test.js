@@ -228,7 +228,12 @@ describe('Chapter Four: Trees and Graphs', function() {
   })
 
   it('4.3 - List of Depths', function() {
-    expect(true).to.be.false
+    var biTree = chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    var depthArry = chapterFour.listOfDepths(biTree)
+    expect(depthArry[0]).to.deep.equal([5])
+    expect(depthArry[1]).to.deep.equal([3, 8])
+    expect(depthArry[2]).to.deep.equal([2, 4, 7, 9])
+    expect(depthArry[3]).to.deep.equal([1, 6])
   })
   
   it('4.4 - Check Balanced', function() {

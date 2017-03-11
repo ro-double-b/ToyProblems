@@ -51,7 +51,7 @@ exports.minimalTree = (array) => {
 // 4.3 - List of Depths
 
 exports.listOfDepths = (tree) => {
-  // starting with an array of an arrays until I solve the problem, will implement with linked lists after
+  // using an array because it is more simple to test, adding values into a linked list would be an easy addition
   const result = [];
   const innerFunction = (node, depth) => {
     if (result[depth] === undefined) {
