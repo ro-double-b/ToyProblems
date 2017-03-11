@@ -267,7 +267,11 @@ describe('Chapter Eight: Recursion and Dynamic Programing', function() {
   })
 
   it('8.2 - Robot in a Grid', function() {
-    expect(true).to.be.false  
+    expect(chapterEight.robotInAGrid(2, 2)).to.deep.equal([ 'r', 'r', 'd', 'd' ])
+    expect(chapterEight.robotInAGrid(2, 2, [[0, 1]])).to.deep.equal([ 'd', 'r', 'r', 'd' ])
+    expect(chapterEight.robotInAGrid(2, 2, [[0, 0]])).to.be.false
+    expect(chapterEight.robotInAGrid(2, 2, [[0, 1], [1, 0]])).to.be.false
+    expect(chapterEight.robotInAGrid(2, 2, [[2, 2]])).to.be.false
   })
 
   it('8.3 - Magic Index', function() {
