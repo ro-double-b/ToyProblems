@@ -41,7 +41,9 @@ describe('Chapter One: Arrays and Strings', function() {
   })
   
   it('1.6 - String Compression', function() {
-
+    expect(chapterOne.stringCompression('a')).to.equal('a')
+    expect(chapterOne.stringCompression('aaa')).to.equal('a3')
+    expect(chapterOne.stringCompression('aabcccccaaa')).to.equal('a2b1c5a3')
       
   })
   
