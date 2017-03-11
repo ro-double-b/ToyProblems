@@ -211,7 +211,20 @@ describe('Chapter Four: Trees and Graphs', function() {
   })
 
   it('4.2 - Minimal Tree', function() {
-    expect(true).to.be.false  
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).value).to.equal(5)
+
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[0].value).to.equal(3)
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[1].value).to.equal(8)
+
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[0].children[0].value).to.equal(2)
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[0].children[1].value).to.equal(4)
+
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[0].children[0].children[0].value).to.equal(1)
+
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[1].children[0].value).to.equal(7)
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[1].children[1].value).to.equal(9)
+
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[1].children[0].children[0].value).to.equal(6)
   })
 
   it('4.3 - List of Depths', function() {

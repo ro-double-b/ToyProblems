@@ -25,18 +25,22 @@ exports.routeBetweenNodes = (graph, nodeOne, nodeTwo) => {
 // 4.2 - Minimal Tree
 
 exports.minimalTree = (array) => {
-  const midpoint = Math.floor(array.length /2);
-  const searchTree = Tree(array[midpoint]);
+  const midpoint = Math.floor(array.length / 2);
+  const searchTree = helper.Tree(array[midpoint]);
   const innerFunction = (node, array1, array2) => {
-    if (array1.length >= 1) {
+    if (array1.length > 1) {
       const midpoint1 = Math.floor(array1.length / 2);
       node.addChild(array1[midpoint1]);
       innerFunction(node.children[0], array1.slice(0, midpoint1), array1.slice(midpoint1 + 1));
+    } else if (array1.length === 1) {
+      node.addChild(array1[0]);
     }
-    if (array2.length >= 1) {
+    if (array2.length > 1) {
       const midpoint2 = Math.floor(array2.length / 2);
       node.addChild(array2[midpoint2]);
-      innerFunction(node.children[1], array2.slice(0, midpoint2), array2.slice(midpoint + 1));
+      innerFunction(node.children[1], array2.slice(0, midpoint2), array2.slice(midpoint2 + 1));
+    } else if (array2.length === 1) {
+      node.addChild(array2[0]);
     }
   };
 
