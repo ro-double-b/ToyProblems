@@ -62,48 +62,84 @@ exports.partition = (linkedList, partitionNum) => {
 };
 
 // 2.5 - Sum Lists
-exports.sumLists = (linkedListOne, LinkedListTwo) => {
-  let nodeOne = linkedListOne.head;
-  let nodeTwo = LinkedListTwo.head;
+// currently this only takes in two linked lists that are equal in size
+// will update if there are more 
+exports.sumLists = (linkedListOne, linkedListTwo) => {
   const result = helper.LinkedList();
-  while (nodeOne != null) {
-  
-    result.addToTail(nodeOne.value);
-    nodeOne = nodeOne.next;
-  }
-
-  let resultNode = result.head;
-  while (nodeTwo != null) {
-    if (resultNode.next === null) {
-      result.addToTail(0);
-    }
-    if (resultNode.value + nodeTwo.value < 10) {
-      resultNode.value = resultNode.value + nodeTwo.value;
-      resultNode = resultNode.next;
-      nodeTwo = nodeTwo.next;
+  let counter = 0
+  const greaterThanTen = (number) => {
+    if (number > 10) {
+      counter = 1;
+      return number - 10;
     } else {
-      resultNode.value = 10 - resultNode.value + nodeTwo.value;
-      resultNode.next.value = resultNode.next.value + 1;
-      resultNode = resultNode.next;
-      nodeTwo = nodeTwo.next;
+      counter = 0;
+      return number;
     }
-  }
-
-  // let resultValue = result;
-  // while (nodeOne != null || nodeTwo != null) {
-  //   if ((nodeOne.value + nodeTwo.value + carryOver) < 10) {
-  //     resultValue.value = nodeOne.value + nodeTwo.value + carryOver;
-  //     carryOver = 0;
-  //   } else {
-  //     resultValue.value = 10 - nodeOne.value + nodeTwo.value + carryOver;
-  //     carryOver = 1;
-  //   }
-  //   nodeOne = nodeOne.next;
-  //   nodeTwo = nodeTwo.next;
-  //   resultValue =resultValue.next;
-  // }
-  console.log(result.head.value)
+  };
+  const innerFunction = (nodeOne, nodeTwo) => {
+    if (nodeOne !== null && nodeTwo !== null) {
+      // both nodes still have numbers
+      let temp = nodeOne.value + nodeTwo.value + counter;
+      temp = greaterThanTen(temp);
+      result.addToTail(temp);
+      innerFunction(nodeOne.next, nodeTwo.next);
+    } else if (nodeOne !== null) {
+      // nodeOne is longer than nodeTwo
+      let temp = nodeOne.value + counter;
+      temp = greaterThanTen(temp);
+      result.addToTail(temp);
+      innerFunction(nodeOne.next, nodeTwo);
+    } else if (nodeTwo !== null) {
+      // nodeTwo is longer than nodeOne
+      let temp = nodeTwo.value + counter;
+      temp = greaterThanTen(temp);
+      result.addToTail(temp);
+      innerFunction(nodeOne, nodeTwo.next);
+    } else if (nodeOne === null && nodeTwo ==null) {
+      // check to see if you need to add an additional counter
+      if (counter === 1) {
+        result.addToTail(1);
+      }
+    }
+  };
+  innerFunction(linkedListOne.head, linkedListTwo.head);
   return result;
+  //   result.addToTail(nodeOne.value);
+  //   nodeOne = nodeOne.next;
+  // }
+
+  // let resultNode = result.head;
+  // while (nodeTwo != null) {
+  //   if (resultNode.next === null) {
+  //     result.addToTail(0);
+  //   }
+  //   if (resultNode.value + nodeTwo.value < 10) {
+  //     resultNode.value = resultNode.value + nodeTwo.value;
+  //     resultNode = resultNode.next;
+  //     nodeTwo = nodeTwo.next;
+  //   } else {
+  //     resultNode.value = 10 - resultNode.value + nodeTwo.value;
+  //     resultNode.next.value = resultNode.next.value + 1;
+  //     resultNode = resultNode.next;
+  //     nodeTwo = nodeTwo.next;
+  //   }
+  // }
+
+  // // let resultValue = result;
+  // // while (nodeOne != null || nodeTwo != null) {
+  // //   if ((nodeOne.value + nodeTwo.value + carryOver) < 10) {
+  // //     resultValue.value = nodeOne.value + nodeTwo.value + carryOver;
+  // //     carryOver = 0;
+  // //   } else {
+  // //     resultValue.value = 10 - nodeOne.value + nodeTwo.value + carryOver;
+  // //     carryOver = 1;
+  // //   }
+  // //   nodeOne = nodeOne.next;
+  // //   nodeTwo = nodeTwo.next;
+  // //   resultValue =resultValue.next;
+  // // }
+  // console.log(result.head.value)
+  // return result;
 };
 
 // 2.6 - Palindrome

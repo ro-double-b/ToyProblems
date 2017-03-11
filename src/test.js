@@ -126,20 +126,36 @@ describe('Chapter Two: Linked Lists', function() {
   })
   
   it('2.5 - Sum Lists', function() {
-  expect(true).to.be.false
-  //     var listOne = helper.LinkedList()
-  //     listOne.addToTail(7)
-  //     listOne.addToTail(1)
-  //     listOne.addToTail(6)
+  // test just one node
+  var listOne = helper.LinkedList()
+  listOne.addToTail(7)
+  listOne.addToTail(1)
+  listOne.addToTail(6)
+  var listTwo = helper.LinkedList()
+  
+  var testFirstNode = chapterTwo.sumLists(listOne, listTwo)
+  expect(testFirstNode.head.value).to.equal(listOne.head.value)
+  expect(testFirstNode.head.next.value).to.equal(listOne.head.next.value)
+  expect(testFirstNode.head.next.next.value).to.equal(listOne.head.next.next.value)
 
-  //     var listTwo = helper.LinkedList()
-  //     listTwo.addToTail(5)
-  //     listTwo.addToTail(9)
-  //     listTwo.addToTail(2)
+  var testSecondNode = chapterTwo.sumLists(listTwo, listOne)
+  expect(testSecondNode.head.value).to.equal(listOne.head.value)
+  expect(testSecondNode.head.next.value).to.equal(listOne.head.next.value)
+  expect(testSecondNode.head.next.next.value).to.equal(listOne.head.next.next.value)
 
-  //     var solution = chapterTwo.sumLists(listOne, listTwo)
-  //     console.log(solution, 'ehehe')
-  //     expect(solution.head.value).to.be(2)
+  // test two nodes
+  listTwo.addToTail(8)
+  listTwo.addToTail(9)
+  listTwo.addToTail(1)
+  var testTwoNodes = chapterTwo.sumLists(listOne, listTwo)
+  expect(testTwoNodes.head.value).to.equal(5)
+  expect(testTwoNodes.head.next.value).to.equal(1)
+  expect(testTwoNodes.head.next.next.value).to.equal(8)
+
+  // test if nodes different length
+  listTwo.addToTail(9)
+  var testDiffLengthNodes = chapterTwo.sumLists(listOne, listTwo)
+  expect(testDiffLengthNodes.head.next.next.next.value).to.equal(9)
   })
   
   xit('2.6 - Palindrome', function() {
@@ -198,8 +214,8 @@ describe('Chapter Three: Stacks and Queues', function() {
     expect(testStack.min()).to.equal(5)
   })
 
-  it('3.3 - Stack of Plates', function() {
-    expect(true).to.be.false
+  xit('3.3 - Stack of Plates', function() {
+    
   })
   
   it('3.4 - Queue via Stacks', function() {
