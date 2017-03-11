@@ -40,7 +40,10 @@ describe('Chapter One: Arrays and Strings', function() {
       expect(chapterOne.oneAway('pale', 'bake')).to.be.false;
   })
   
-  xit('1.6 - String Compression', function() {
+  it('1.6 - String Compression', function() {
+    expect(chapterOne.stringCompression('a')).to.equal('a')
+    expect(chapterOne.stringCompression('aaa')).to.equal('a3')
+    expect(chapterOne.stringCompression('aabcccccaaa')).to.equal('a2b1c5a3')
       
   })
   
@@ -214,8 +217,35 @@ describe('Chapter Three: Stacks and Queues', function() {
     expect(testStack.min()).to.equal(5)
   })
 
-  xit('3.3 - Stack of Plates', function() {
-    
+  it('3.3 - Stack of Plates', function() {
+    var stack = helper.Stack()
+    var testStack = chapterThree.stackOfPlates(2)
+
+    // testing adding past the max height creates new stacks
+    testStack.push(1)
+    stack.push(1)
+    testStack.push(2)
+    stack.push(2)
+    expect(testStack.stacks.length).to.equal(1)
+    testStack.push(3)
+    stack.push(3)
+    expect(testStack.stacks.length).to.equal(2)
+    testStack.push(4)
+    stack.push(4)
+    expect(testStack.stacks.length).to.equal(2)
+    testStack.push(5)
+    stack.push(5)
+    expect(testStack.stacks.length).to.equal(3)
+
+
+    // testing that pop works both on stacks of plates the same as a normal single stack
+    expect(testStack.pop()).to.equal(stack.pop())
+    expect(testStack.pop()).to.equal(stack.pop())
+    expect(testStack.stacks.length).to.equal(2)
+    expect(testStack.pop()).to.equal(stack.pop())
+    expect(testStack.pop()).to.equal(stack.pop())
+    expect(testStack.stacks.length).to.equal(1)
+
   })
   
   it('3.4 - Queue via Stacks', function() {
