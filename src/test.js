@@ -181,7 +181,21 @@ describe('Chapter Three: Stacks and Queues', function() {
   })
 
   it('3.2 - Stack Min', function() {
-    expect(true).to.be.false  
+    var testStack = chapterThree.stackMin();
+    testStack.push(5)
+    expect(testStack.min()).to.equal(5)
+    testStack.push(2)
+    expect(testStack.min()).to.equal(2)
+    testStack.push(8)
+    expect(testStack.min()).to.equal(2)
+    testStack.push(2)
+    expect(testStack.min()).to.equal(2)
+    testStack.pop()
+    expect(testStack.min()).to.equal(2)
+    testStack.pop()
+    expect(testStack.min()).to.equal(2)
+    testStack.pop()
+    expect(testStack.min()).to.equal(5)
   })
 
   it('3.3 - Stack of Plates', function() {
