@@ -71,10 +71,10 @@ exports.listOfDepths = (tree) => {
 exports.checkBalanced = (tree) => {
   const depths = [];
   const innerFunction = (node, depth) => {
-    if (node.children === undefined) {
+    if (node.children.length < 1) {
       depths.push(depth);
     }
-    for (let i = 0; node.children.length; i++) {
+    for (let i = 0; i < node.children.length; i++) {
       innerFunction(node.children[i], depth + 1);
     }
   };

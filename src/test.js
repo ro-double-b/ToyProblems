@@ -237,7 +237,12 @@ describe('Chapter Four: Trees and Graphs', function() {
   })
   
   it('4.4 - Check Balanced', function() {
-    expect(true).to.be.false
+    var balancedTree = chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    expect(chapterFour.checkBalanced(balancedTree)).to.be.true
+    balancedTree.children[0].children[0].children[0].addChild(3)
+    balancedTree.children[0].children[0].children[0].children[0].addChild(3)
+    expect(chapterFour.checkBalanced(balancedTree)).to.be.false
+
   })
   
   xit('4.5 - Validate BST', function() {
