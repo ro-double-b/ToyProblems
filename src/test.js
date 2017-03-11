@@ -6,6 +6,7 @@ const chapterOne = require('./chapter1');
 const chapterTwo = require('./chapter2');
 const chapterThree = require('./chapter3');
 const chapterFour = require('./chapter4');
+const chapterEight = require('./chapter8');
 
 // =================================================
 // =================================================
@@ -125,20 +126,36 @@ describe('Chapter Two: Linked Lists', function() {
   })
   
   it('2.5 - Sum Lists', function() {
-  expect(true).to.be.false
-  //     var listOne = helper.LinkedList()
-  //     listOne.addToTail(7)
-  //     listOne.addToTail(1)
-  //     listOne.addToTail(6)
+  // test just one node
+  var listOne = helper.LinkedList()
+  listOne.addToTail(7)
+  listOne.addToTail(1)
+  listOne.addToTail(6)
+  var listTwo = helper.LinkedList()
+  
+  var testFirstNode = chapterTwo.sumLists(listOne, listTwo)
+  expect(testFirstNode.head.value).to.equal(listOne.head.value)
+  expect(testFirstNode.head.next.value).to.equal(listOne.head.next.value)
+  expect(testFirstNode.head.next.next.value).to.equal(listOne.head.next.next.value)
 
-  //     var listTwo = helper.LinkedList()
-  //     listTwo.addToTail(5)
-  //     listTwo.addToTail(9)
-  //     listTwo.addToTail(2)
+  var testSecondNode = chapterTwo.sumLists(listTwo, listOne)
+  expect(testSecondNode.head.value).to.equal(listOne.head.value)
+  expect(testSecondNode.head.next.value).to.equal(listOne.head.next.value)
+  expect(testSecondNode.head.next.next.value).to.equal(listOne.head.next.next.value)
 
-  //     var solution = chapterTwo.sumLists(listOne, listTwo)
-  //     console.log(solution, 'ehehe')
-  //     expect(solution.head.value).to.be(2)
+  // test two nodes
+  listTwo.addToTail(8)
+  listTwo.addToTail(9)
+  listTwo.addToTail(1)
+  var testTwoNodes = chapterTwo.sumLists(listOne, listTwo)
+  expect(testTwoNodes.head.value).to.equal(5)
+  expect(testTwoNodes.head.next.value).to.equal(1)
+  expect(testTwoNodes.head.next.next.value).to.equal(8)
+
+  // test if nodes different length
+  listTwo.addToTail(9)
+  var testDiffLengthNodes = chapterTwo.sumLists(listOne, listTwo)
+  expect(testDiffLengthNodes.head.next.next.next.value).to.equal(9)
   })
   
   xit('2.6 - Palindrome', function() {
@@ -157,15 +174,48 @@ describe('Chapter Two: Linked Lists', function() {
 describe('Chapter Three: Stacks and Queues', function() {
 
   it('3.1 - Three in One', function() {
-    expect(true).to.be.false
+    var stack1 = helper.Stack()
+    var stack2 = helper.Stack()
+    var stack3 = helper.Stack()
+
+    var threeStack = chapterThree.threeInOne()
+    stack1.push(1)
+    threeStack.one.push(1)
+    stack1.push(2)
+    threeStack.one.push(2)
+
+    stack2.push(5)
+    threeStack.two.push(5)
+
+    stack3.push(8)
+    threeStack.three.push(8)
+
+    expect(threeStack.one.pop()).to.equal(stack1.pop())
+    expect(threeStack.three.pop()).to.equal(stack3.pop())
+    expect(threeStack.two.pop()).to.equal(stack2.pop())
+    expect(threeStack.one.pop()).to.equal(stack1.pop())
   })
 
   it('3.2 - Stack Min', function() {
-    expect(true).to.be.false  
+    var testStack = chapterThree.stackMin();
+    testStack.push(5)
+    expect(testStack.min()).to.equal(5)
+    testStack.push(2)
+    expect(testStack.min()).to.equal(2)
+    testStack.push(8)
+    expect(testStack.min()).to.equal(2)
+    testStack.push(2)
+    expect(testStack.min()).to.equal(2)
+    testStack.pop()
+    expect(testStack.min()).to.equal(2)
+    testStack.pop()
+    expect(testStack.min()).to.equal(2)
+    testStack.pop()
+    expect(testStack.min()).to.equal(5)
   })
 
-  it('3.3 - Stack of Plates', function() {
-    expect(true).to.be.false
+  xit('3.3 - Stack of Plates', function() {
+    
   })
   
   it('3.4 - Queue via Stacks', function() {
@@ -210,15 +260,38 @@ describe('Chapter Four: Trees and Graphs', function() {
   })
 
   it('4.2 - Minimal Tree', function() {
-    expect(true).to.be.false  
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).value).to.equal(5)
+
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[0].value).to.equal(3)
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[1].value).to.equal(8)
+
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[0].children[0].value).to.equal(2)
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[0].children[1].value).to.equal(4)
+
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[0].children[0].children[0].value).to.equal(1)
+
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[1].children[0].value).to.equal(7)
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[1].children[1].value).to.equal(9)
+
+    expect(chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9]).children[1].children[0].children[0].value).to.equal(6)
   })
 
   it('4.3 - List of Depths', function() {
-    expect(true).to.be.false
+    var biTree = chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    var depthArry = chapterFour.listOfDepths(biTree)
+    expect(depthArry[0]).to.deep.equal([5])
+    expect(depthArry[1]).to.deep.equal([3, 8])
+    expect(depthArry[2]).to.deep.equal([2, 4, 7, 9])
+    expect(depthArry[3]).to.deep.equal([1, 6])
   })
   
   it('4.4 - Check Balanced', function() {
-    expect(true).to.be.false
+    var balancedTree = chapterFour.minimalTree([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    expect(chapterFour.checkBalanced(balancedTree)).to.be.true
+    balancedTree.children[0].children[0].children[0].addChild(3)
+    balancedTree.children[0].children[0].children[0].children[0].addChild(3)
+    expect(chapterFour.checkBalanced(balancedTree)).to.be.false
+
   })
   
   xit('4.5 - Validate BST', function() {
@@ -258,16 +331,25 @@ describe('Chapter Four: Trees and Graphs', function() {
 describe('Chapter Eight: Recursion and Dynamic Programing', function() {
 
   it('8.1 - Triple Step', function() {
-    epxect(true).to.be.false 
+    expect(chapterEight.tripleStep(1)).to.be.equal(1)
+    expect(chapterEight.tripleStep(2)).to.be.equal(2)
+    expect(chapterEight.tripleStep(3)).to.be.equal(4) 
+    expect(chapterEight.tripleStep(4)).to.be.equal(7)
 
   })
 
   it('8.2 - Robot in a Grid', function() {
-    expect(true).to.be.false  
+    expect(chapterEight.robotInAGrid(2, 2)).to.deep.equal([ 'r', 'r', 'd', 'd' ])
+    expect(chapterEight.robotInAGrid(2, 2, [[0, 1]])).to.deep.equal([ 'd', 'r', 'r', 'd' ])
+    expect(chapterEight.robotInAGrid(2, 2, [[0, 0]])).to.be.false
+    expect(chapterEight.robotInAGrid(2, 2, [[0, 1], [1, 0]])).to.be.false
+    expect(chapterEight.robotInAGrid(2, 2, [[2, 2]])).to.be.false
   })
 
   it('8.3 - Magic Index', function() {
-    expect(true).to.be.false  
+    expect(chapterEight.magicIndex([0, 2, 3, 6, 18])).to.be.equal(0)
+    expect(chapterEight.magicIndex([-10, 1, 3, 6, 18])).to.be.equal(1)
+    expect(chapterEight.magicIndex([-10, -9, -8, -1, 4])).to.be.equal(4)
   })
   
   xit('8.4 - Power Set', function() {
@@ -275,7 +357,10 @@ describe('Chapter Eight: Recursion and Dynamic Programing', function() {
   })
   
   it('8.5 - Recursive Multiply', function() {
-    expect(true).to.be.false
+    expect(chapterEight.recursiveMultiply(2, 2)).to.be.equal(4)
+    expect(chapterEight.recursiveMultiply(1, 2)).to.be.equal(2)
+    expect(chapterEight.recursiveMultiply(2, 1)).to.be.equal(2)
+    expect(chapterEight.recursiveMultiply(2, 2)).to.be.equal(4)
   })
   
   xit('8.6 - Towers of Hanoi', function() {

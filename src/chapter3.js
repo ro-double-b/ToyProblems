@@ -51,7 +51,7 @@ exports.stackMin = () => {
     // this is the added code for min to work
     if (min[0] === undefined) {
       min[0] = value;
-    } else if (min[0] <= value) {
+    } else if (min[0] < value) {
       min.push(value);
     } else {
       min.unshift(value);
@@ -61,13 +61,13 @@ exports.stackMin = () => {
   someInstance.pop = () => {
     if (key > 0) {
       // this is the added code for min to work
-      if (min[0] !== lastValue) {
-        min.splice(key, 1);
+      if (min[0] !== storage[key - 1]) {
+        min.splice(min.length, 1);
       } else {
         min.splice(0, 1);
       }
       // end of added code
-      delete storage[key];
+      delete storage[key - 1];
       key--;
       lastValue = storage[key];
     }

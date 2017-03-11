@@ -25,18 +25,22 @@ exports.routeBetweenNodes = (graph, nodeOne, nodeTwo) => {
 // 4.2 - Minimal Tree
 
 exports.minimalTree = (array) => {
-  const midpoint = Math.floor(array.length /2);
-  const searchTree = Tree(array[midpoint]);
+  const midpoint = Math.floor(array.length / 2);
+  const searchTree = helper.Tree(array[midpoint]);
   const innerFunction = (node, array1, array2) => {
-    if (array1.length >= 1) {
+    if (array1.length > 1) {
       const midpoint1 = Math.floor(array1.length / 2);
       node.addChild(array1[midpoint1]);
       innerFunction(node.children[0], array1.slice(0, midpoint1), array1.slice(midpoint1 + 1));
+    } else if (array1.length === 1) {
+      node.addChild(array1[0]);
     }
-    if (array2.length >= 1) {
+    if (array2.length > 1) {
       const midpoint2 = Math.floor(array2.length / 2);
       node.addChild(array2[midpoint2]);
-      innerFunction(node.children[1], array2.slice(0, midpoint2), array2.slice(midpoint + 1));
+      innerFunction(node.children[1], array2.slice(0, midpoint2), array2.slice(midpoint2 + 1));
+    } else if (array2.length === 1) {
+      node.addChild(array2[0]);
     }
   };
 
@@ -47,7 +51,7 @@ exports.minimalTree = (array) => {
 // 4.3 - List of Depths
 
 exports.listOfDepths = (tree) => {
-  // starting with an array of an arrays until I solve the problem, will implement with linked lists after
+  // using an array because it is more simple to test, adding values into a linked list would be an easy addition
   const result = [];
   const innerFunction = (node, depth) => {
     if (result[depth] === undefined) {
@@ -67,10 +71,10 @@ exports.listOfDepths = (tree) => {
 exports.checkBalanced = (tree) => {
   const depths = [];
   const innerFunction = (node, depth) => {
-    if (node.children === undefined) {
+    if (node.children.length < 1) {
       depths.push(depth);
     }
-    for (let i = 0; node.children.length; i++) {
+    for (let i = 0; i < node.children.length; i++) {
       innerFunction(node.children[i], depth + 1);
     }
   };

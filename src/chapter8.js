@@ -19,18 +19,34 @@ exports.tripleStep = (n) => {
 
 // 8.2 - Robot in a Grid
 // first designing an algro w/o limited paths
-exports.robotInAGridNoLimit = (r, c) => {
+exports.robotInAGrid = (r, c, offLimits) => {
+  // offlimits is given as follows:
+    // [row offLimits, col offLimits]
   const results = [];
+  if (offLimits === undefined) {
+    offLimits = [[r+1, c+1]];
+  }
+
+  const checkLimit = (row, col) => {
+    let result = true;
+    for (let i = 0; i < offLimits.length; i++) {
+      if (offLimits[i][0] === col && offLimits[i][1] === row) {
+        result = false;
+      }
+    }
+    return result;
+  };
+
   const innerFunction = (path) => {
-    if (path[0] === r && path[1] === c) {
+    if (path[0] === r && path[1] === c && checkLimit(path[0], path[1])) {
       results.push(path[2]);
     }
-    if (path[0] < r) {
+    if (path[0] < r && checkLimit(path[0], path[1])) {
       const temp = Array.from(path[2]);
       temp.push('r');
       innerFunction([path[0] + 1, path[1], temp]);
     }
-    if (path[1] < c) {
+    if (path[1] < c && checkLimit(path[0], path[1])) {
       const temp = Array.from(path[2]);
       temp.push('d');
       innerFunction([path[0], path[1] + 1, temp]);
@@ -38,7 +54,11 @@ exports.robotInAGridNoLimit = (r, c) => {
   };
   const start = [0, 0, []];
   innerFunction(start);
-  return results;
+  if (results[0] === undefined) {
+    return false;
+  } else {
+    return results[0];
+  }
 };
 
 // 8.3 - Magic Index
@@ -55,7 +75,7 @@ exports.magicIndex = (array, length) => {
     return exports.magicIndex(lowerArr, 0);
   } else if (array[midpoint] < arrayMidpoint) {
     const higherArr = array.slice(midpoint);
-    return exports.magicIndex(higherArr, midpoint);
+    return exports.magicIndex(higherArr, midpoint + length);
   }
   return - 1;
 };
@@ -64,8 +84,12 @@ exports.magicIndex = (array, length) => {
 
 // 8.5 - Recursive Multiply
 exports.recursiveMultiply = (int1, int2) => {
-  if (int2 !== 0) {
-    return exports.recursiveMultiply(int1 + int2, int2 - 1);
+  if (int2 > 1) {
+    if (int1 === 1) {
+      return exports.recursiveMultiply(int2, int2 - 1);
+    } else {
+      return exports.recursiveMultiply(int1 + int2, int2 - 1);
+    }
   } else {
     return int1;
   }

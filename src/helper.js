@@ -111,7 +111,7 @@ exports.Tree = (value) => {
   newTree.children = [];
 
   newTree.addChild = (value) => {
-    const child = Tree(value);
+    const child = exports.Tree(value);
     newTree.children.push(child);
   };
 
