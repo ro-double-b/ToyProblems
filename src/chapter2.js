@@ -63,7 +63,7 @@ exports.partition = (linkedList, partitionNum) => {
 
 // 2.5 - Sum Lists
 // currently this only takes in two linked lists that are equal in size
-// will update if there are more 
+// will update if there are more
 exports.sumLists = (linkedListOne, linkedListTwo) => {
   const result = helper.LinkedList();
   let counter = 0
