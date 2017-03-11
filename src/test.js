@@ -158,7 +158,26 @@ describe('Chapter Two: Linked Lists', function() {
 describe('Chapter Three: Stacks and Queues', function() {
 
   it('3.1 - Three in One', function() {
-    expect(true).to.be.false
+    var stack1 = helper.Stack()
+    var stack2 = helper.Stack()
+    var stack3 = helper.Stack()
+
+    var threeStack = chapterThree.threeInOne()
+    stack1.push(1)
+    threeStack.one.push(1)
+    stack1.push(2)
+    threeStack.one.push(2)
+
+    stack2.push(5)
+    threeStack.two.push(5)
+
+    stack3.push(8)
+    threeStack.three.push(8)
+
+    expect(threeStack.one.pop()).to.equal(stack1.pop())
+    expect(threeStack.three.pop()).to.equal(stack3.pop())
+    expect(threeStack.two.pop()).to.equal(stack2.pop())
+    expect(threeStack.one.pop()).to.equal(stack1.pop())
   })
 
   it('3.2 - Stack Min', function() {
