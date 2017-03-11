@@ -358,6 +358,58 @@ describe('Chapter Four: Trees and Graphs', function() {
 
 })
 
+describe('Chapter Seven: Object-Oriented Design', function() {
+
+  xit('7.1 - Deck of Cards', function() {
+
+  })
+
+  xit('7.2 - Call Center', function() {
+    
+  })
+
+  xit('7.3 - JukeBox', function() {
+    
+  })
+  
+  xit('7.4 - Parking Lot', function() {
+    
+  })
+  
+  xit('7.5 - Online Book Reader', function() {
+    
+  })
+  
+  xit('7.6 - Jigsaw', function() {
+
+  })
+
+  xit('7.7 - Chat Server', function() {
+    
+  })
+
+  xit('7.8 - Othello', function() {
+    
+  })
+
+  xit('7.9 - Circular Array', function() {
+
+  })
+  
+  xit('7.10 - Minesweeper', function() {
+
+  })
+  
+  xit('7.11 - File System', function() {
+
+  })
+  
+  xit('7.12 - Hash Table', function() {
+
+  })
+
+})
+
 describe('Chapter Eight: Recursion and Dynamic Programing', function() {
 
   it('8.1 - Triple Step', function() {
