@@ -47,12 +47,27 @@ describe('Chapter One: Arrays and Strings', function() {
       
   })
   
-  xit('1.7 - Rotate Matrix', function() {
+  it('1.7 - Rotate Matrix', function() {
+    const test1 = [[1, 2], [3, 4]];
+    const answer1 = [[2, 4], [1, 3]];
+    const test2 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    const answer2 = [[3, 6, 9], [2, 5, 8], [1, 4, 7]]
+
+    expect(chapterOne.rotateMatrix(test1)).to.deep.equal(answer1)
+    expect(chapterOne.rotateMatrix(test2)).to.deep.equal(answer2)
       
   })
 
-  xit('1.8 - Zero Matrix', function() {
-      
+  it('1.8 - Zero Matrix', function() {
+    var test =   [[1, 1, 1, 1], 
+                    [1, 1, 1, 1], 
+                    [1, 1, 1, 0]]
+
+    const answer = [[1, 1, 1, 0], 
+                    [1, 1, 1, 0], 
+                    [0, 0, 0, 0]]
+
+    expect(chapterOne.zeroMatrix(test)).to.deep.equal(answer)
   })
 
   xit('1.9 - String Rotation', function() {
