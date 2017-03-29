@@ -156,7 +156,47 @@ exports.stringCompression = (string) => {
 
 // 1.7 - Rotate Matriz
 
+exports.rotateMatrix = (matrix) => {
+  const matrixLength = matrix[0].length;
+  const newMatrix = [];
+  for (let i = 0; i < matrixLength; i++) {
+    const newArr = [];
+    for (let j = 0; j < matrixLength; j++) {
+      newArr.push(matrix[j][matrixLength - i - 1]);
+    }
+    newMatrix.push(newArr);
+  }
+  return newMatrix;
+};
+
 // 1.8 - Zero Matrix
+
+exports.zeroMatrix = (matrix) => {
+  const matrixLength = matrix[0].length;
+  const matrixHeight = matrix.length;
+  const rows = [];
+  const column = [];
+  // find all zeros in matrix
+  for (let i = 0; i < matrixHeight; i++) {
+    for (let j = 0; j < matrixLength; j++) {
+      if (matrix[i][j] === 0) {
+        rows.push(i);
+        column.push(j);
+      }
+    }
+  }
+  for (let i = 0; i < column.length; i++) {
+    for (let j = 0; j < matrixHeight; j++) {
+      matrix[j][column[i]] = 0;
+    }
+  }
+  for (let i = 0; i < rows.length; i++) {
+    for (let j = 0; j < matrixLength; j++) {
+      matrix[rows[i]][j] = 0;
+    }
+  }
+  return matrix
+}
 
 // 1.9 - String Rotation
 
